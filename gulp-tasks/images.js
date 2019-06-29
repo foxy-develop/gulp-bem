@@ -1,6 +1,6 @@
 "use strict";
 
-import { paths } from "../gulpfile.babel";
+import { paths, imageQuality } from "../globalConfig";
 import gulp from "gulp";
 import gulpif from "gulp-if";
 import imagemin from "gulp-imagemin";
@@ -25,14 +25,14 @@ gulp.task("images", () => {
             }),
             imageminPngquant({
                 speed: 5,
-                quality: [0.6, 0.8]
+                quality: imageQuality.png
             }),
             imageminZopfli({
                 more: true
             }),
             imageminMozjpeg({
                 progressive: true,
-                quality: 90
+                quality: imageQuality.jpeg
             }),
             imagemin.svgo({
                 plugins: [

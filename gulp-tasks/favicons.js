@@ -1,6 +1,6 @@
 "use strict";
 
-import { paths } from "../gulpfile.babel";
+import { paths, manifest } from "../globalConfig";
 import gulp from "gulp";
 import favicons from "gulp-favicons";
 import debug from "gulp-debug";
@@ -8,15 +8,26 @@ import debug from "gulp-debug";
 gulp.task("favicons", () => {
     return gulp.src(paths.favicons.src)
         .pipe(favicons({
+            appName: manifest.name,
+            appShortName: manifest.shortname,
+            appDescription: manifest.description,
+            background: manifest.bg,
+            url: manifest.url,
+            lang: manifest.lang,
+            display: manifest.display,
+            orientation: manifest.orientation,
+            path: '../favicons/',
+            scope: '/',
+            start_url: '/',
             icons: {
                 appleIcon: true,
                 favicons: true,
-                online: false,
+                online: true,
                 appleStartup: false,
-                android: false,
-                firefox: false,
+                android: true,
+                firefox: true,
                 yandex: false,
-                windows: false,
+                windows: true,
                 coast: false
             }
         }))

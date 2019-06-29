@@ -1,36 +1,37 @@
 "use strict";
 
 import gulp from "gulp";
+import { grid } from '../globalConfig'
 const smartgrid = require("smart-grid");
 
 gulp.task("smart-grid", (cb) => {
     smartgrid("./src/styles/vendor/import/", {
         outputStyle: "scss",
         filename: "_smart-grid",
-        columns: 12, // number of grid columns
-        offset: "30px", // gutter width
-        mobileFirst: true,
+        columns: grid.columns, // number of grid columns
+        offset: grid.offset, // gutter width
+        mobileFirst: grid.direction,
         mixinNames: {
             container: "container"
         },
         container: {
-            fields: "15px" // side fields
+            fields: grid.fields // side fields
         },
         breakPoints: {
             xs: {
-                width: "320px"
+                width: grid.breakpoints.xs
             },
             sm: {
-                width: "576px"
+                width: grid.breakpoints.sm
             },
             md: {
-                width: "768px"
+                width: grid.breakpoints.md
             },
             lg: {
-                width: "992px"
+                width: grid.breakpoints.lg
             },
             xl: {
-                width: "1200px"
+                width: grid.breakpoints.xl
             }
         }
     });

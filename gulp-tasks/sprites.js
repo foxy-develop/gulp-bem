@@ -1,6 +1,6 @@
 "use strict";
 
-import { paths } from "../gulpfile.babel";
+import { paths } from "../globalConfig";
 import gulp from "gulp";
 import svg from "gulp-svg-sprite";
 import debug from "gulp-debug";

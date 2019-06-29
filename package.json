@@ -13,6 +13,7 @@
     "build views": "gulp views --production",
     "build styles": "gulp styles --production",
     "build scripts": "gulp scripts --production",
+    "build serviceWorker": "gulp serviceWorker --production",
     "build images": "gulp images --production",
     "build webp": "gulp webp --production",
     "build sprites": "gulp sprites --production",
@@ -55,12 +56,14 @@
     "imagemin-pngquant": "^8.0.0",
     "imagemin-webp": "^5.0.0",
     "imagemin-zopfli": "^6.0.0",
+    "psi": "^3.1.0",
     "require-dir": "^1.2.0",
     "stylelint": "^10.0.1",
     "stylelint-order": "^3.0.0",
     "stylelint-selector-bem-pattern": "^2.1.0",
     "webpack": "^4.30.0",
     "webpack-stream": "^5.2.1",
+    "workbox-build": "^4.3.1",
     "yargs": "^13.2.4"
   },
   "dependencies": {

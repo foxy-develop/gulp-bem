@@ -1,6 +1,6 @@
 "use strict";
 
-import { paths } from "../gulpfile.babel";
+import { paths } from "../globalConfig";
 import gulp from "gulp";
 import include from "gulp-file-include";
 import gulpif from "gulp-if";

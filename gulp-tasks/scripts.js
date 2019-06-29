@@ -1,6 +1,6 @@
 "use strict";
 
-import { paths } from "../gulpfile.babel";
+import { paths } from "../globalConfig";
 import webpack from "webpack";
 import webpackStream from "webpack-stream";
 import gulp from "gulp";

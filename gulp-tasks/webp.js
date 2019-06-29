@@ -1,6 +1,6 @@
 "use strict";
 
-import { paths } from "../gulpfile.babel";
+import { paths, imageQuality } from "../globalConfig";
 import gulp from "gulp";
 import gulpif from "gulp-if";
 import imageminWebp from "imagemin-webp";
@@ -16,7 +16,7 @@ gulp.task("webp", () => {
     return gulp.src(paths.webp.src)
         .pipe(webp(gulpif(production, imageminWebp({
             lossless: true,
-            quality: 100,
+            quality: imageQuality.webp,
             alphaQuality: 100
         }))))
         .pipe(gulp.dest(paths.webp.dist))

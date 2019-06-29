@@ -1,6 +1,6 @@
 "use strict";
 
-import { paths } from "../gulpfile.babel";
+import { paths, autoprefixerBrowsers } from "../globalConfig";
 import gulp from "gulp";
 import gulpif from "gulp-if";
 import rename from "gulp-rename";
@@ -24,7 +24,7 @@ gulp.task("styles", () => {
         .pipe(sass())
         .pipe(groupmedia())
         .pipe(gulpif(production, autoprefixer({
-            browsers: ["last 12 versions", "> 1%", "ie 8", "ie 7"]
+            browsers: autoprefixerBrowsers
         })))
         .pipe(gulpif(production, mincss({
             compatibility: "ie8", level: {
