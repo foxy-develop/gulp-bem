@@ -9,7 +9,7 @@
     path: './dist/',
     logPrefix: 'GB',
     https: false,
-    logLevel: 'debug',
+    logLevel: 'info', //Can be either "info", "debug", "warn", or "silent"
     notify: true
   }
 
@@ -139,6 +139,16 @@
   ];
 
 /***************************************************
+7. ТЕСТ GOOGLE PAGESPEED
+****************************************************/
+
+  const pagespeed = {
+    site: `http://192.168.43.189:3500`,
+    mobile: true,
+    desctop: true
+  };
+
+/***************************************************
 Экспорт обьектов
 ****************************************************/
 
@@ -148,3 +158,4 @@ export { manifest };
 export { grid };
 export { imageQuality };
 export { autoprefixerBrowsers };
+export { pagespeed };

@@ -8,9 +8,9 @@ requireDir("./gulp-tasks/");
 
 export const development = gulp.series("clean", "smart-grid",
     gulp.parallel(["views", "styles", "scripts", "images", "webp", "sprites", "fonts", "favicons"]), "serviceWorker", "generateManifest",
-    gulp.parallel("serve"));
+    "serve", "pagespeed");
 
 export const prod = gulp.series("clean",
-    gulp.series(["views", "styles", "scripts", "images", "webp", "sprites", "fonts", "favicons",  "serviceWorker", "generateManifest", "gzip"]));
+    gulp.series(["views", "styles", "scripts", "images", "webp", "sprites", "fonts", "favicons",  "serviceWorker", "generateManifest", "gzip", "pagespeed"]));
 
 export default development;

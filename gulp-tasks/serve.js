@@ -6,12 +6,12 @@ import browsersync from "browser-sync";
 
 gulp.task("serve", () => {
     browsersync.init({
-        server: serverConfig.path,
         port: serverConfig.port,
         notify: serverConfig.notify,
         logPrefix: serverConfig.logPrefix,
         logLevel: serverConfig.logLevel,
-        https: serverConfig.https
+        https: serverConfig.https,
+        server: serverConfig.path
     });
 
     gulp.watch(paths.views.watch, gulp.parallel("views"));
