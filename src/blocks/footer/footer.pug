@@ -1,0 +1,12 @@
+mixin footer(mods)
+  -
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' footer--' + modsList[i].trim();
+      }
+    }
+  footer.footer(class=allMods, role='contentinfo')&attributes(attributes)
+    .footer__inner
+      block

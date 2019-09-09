@@ -1,0 +1,24 @@
+extends ../pug/layout.pug
+
+block meta
+  title Главная
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+block nav
+  nav.nav-main
+    ul.nav-main__list
+      li.nav-main__item Link
+
+block content
+  +header()
+    h1 firs launch
+  .main
+    .main__content
+      p test
+  .container
+    h3
+      | Заголовок страницы
+
+  +footer()
+    p test footer

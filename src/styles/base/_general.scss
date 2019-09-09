@@ -1,7 +1,0 @@
-.container {
-  @include container();
-  @include sm(max-width, 32rem);
-  @include md(max-width, 44rem);
-  @include lg(max-width, 58rem);
-  @include xl(max-width, 72rem);
-}

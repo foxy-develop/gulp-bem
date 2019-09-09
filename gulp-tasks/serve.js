@@ -4,22 +4,24 @@ import { paths, serverConfig } from "../globalConfig";
 import gulp from "gulp";
 import browsersync from "browser-sync";
 
-gulp.task("serve", () => {
-    browsersync.init({
-        port: serverConfig.port,
-        notify: serverConfig.notify,
-        logPrefix: serverConfig.logPrefix,
-        logLevel: serverConfig.logLevel,
-        https: serverConfig.https,
-        server: serverConfig.path
-    });
+gulp.task("reload", () => browsersync.reload());
 
-    gulp.watch(paths.views.watch, gulp.parallel("views"));
-    gulp.watch(paths.styles.watch, gulp.parallel("styles"));
-    gulp.watch(paths.scripts.watch, gulp.parallel("scripts"));
-    gulp.watch(paths.serviceWorker.watch, gulp.parallel("serviceWorker"));
-    gulp.watch(paths.sprites.watch, gulp.parallel("sprites"));
-    gulp.watch(paths.images.watch, gulp.parallel("images"));
-    gulp.watch(paths.webp.watch, gulp.parallel("webp"));
-    gulp.watch(paths.fonts.watch, gulp.parallel("fonts"));
+gulp.task("serve", () => {
+  browsersync.init({
+    port: serverConfig.port,
+    notify: serverConfig.notify,
+    logPrefix: serverConfig.logPrefix,
+    logLevel: serverConfig.logLevel,
+    https: serverConfig.https,
+    server: serverConfig.path
+  });
+
+  gulp.watch(paths.views.watch, gulp.series(["views", "reload"]));
+  gulp.watch(paths.styles.watch, gulp.series(["styles", "reload"]));
+  gulp.watch(paths.scripts.watch, gulp.series(["scripts", "reload"]));
+  gulp.watch(paths.serviceWorker.watch, gulp.series(["serviceWorker", "reload"]));
+  gulp.watch(paths.sprites.watch, gulp.series(["sprites", "reload"]));
+  gulp.watch(paths.images.watch, gulp.series(["images", "reload"]));
+  gulp.watch(paths.webp.watch, gulp.series(["webp", "reload"]));
+  gulp.watch(paths.fonts.watch, gulp.series("fonts", "reload"));
 });
