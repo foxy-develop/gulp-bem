@@ -8,9 +8,8 @@ requireDir("./gulp-tasks/");
 
 export const development = gulp.series(
   gulp.parallel(["clean", "views"]),
-  gulp.parallel(["images", "webp", "sprites", "fonts", "favicons"]),
+  gulp.parallel(["images", "webp", "sprites", "fonts"]),
   gulp.parallel(["styles", "scripts"]),
-  gulp.parallel(["serviceWorker", "generateManifest"]),
   "serve"
 );
 

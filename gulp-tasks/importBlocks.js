@@ -81,7 +81,7 @@ function importBlocks(type) {
   if (getDifference(list, importsList[type]).length) {
     let require = "/* blocks that used */\n\n";
     list.forEach(el => {
-      require += type == "js" ? `require("${el}");\n` : `@import "${el}";\n`;
+      require += type == "js" ? `require("${el}");\n` : `@import '${el}';\n`;
     });
     fs.writeFileSync(`${paths.bem.main}${type}/_blocks.${type}`, require);
     importsList[type] = list;
