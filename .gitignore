@@ -13,8 +13,8 @@ dist
 yarn.lock
 package-lock.json
 src/pug/mixins.pug
-src/js/blocks.js
-src/scss/blocks.scss
+src/js/_blocks.js
+src/scss/_blocks.scss
 .publish/
 .DS_Store
 *.log
