@@ -14,47 +14,63 @@ import plumber from "gulp-plumber";
 import browsersync from "browser-sync";
 import debug from "gulp-debug";
 import yargs from "yargs";
+import postcss from "gulp-postcss";
+import fonts from "postcss-font-magician";
 
 const argv = yargs.argv,
   production = !!argv.production;
 
-
-
 gulp.task("styles", () => {
   importBlocks("scss");
-  return gulp.src(paths.styles.src)
+  return gulp
+    .src(paths.styles.src)
     .pipe(gulpif(!production, sourcemaps.init()))
     .pipe(plumber())
-    .pipe(sass({includePaths: [__dirname+"/","node_modules"]}))
+    .pipe(sass({ includePaths: [__dirname + "/", "node_modules"] }))
     .pipe(groupmedia())
-    .pipe(gulpif(production, autoprefixer({
-      browsers: autoprefixerBrowsers
-    })))
-    .pipe(gulpif(production, mincss({
-      compatibility: "ie8", level: {
-        1: {
-          specialComments: 0,
-          removeEmpty: true,
-          removeWhitespace: true
-        },
-        2: {
-          mergeMedia: true,
-          removeEmpty: true,
-          removeDuplicateFontRules: true,
-          removeDuplicateMediaBlocks: true,
-          removeDuplicateRules: true,
-          removeUnusedAtRules: false
-        }
-      }
-    })))
-    .pipe(gulpif(production, rename({
-      suffix: ".min"
-    })))
+    .pipe(postcss([fonts({
+      display: "swap",
+      formats: "woff2 woff"
+    })]))
+    .pipe(gulpif(production, autoprefixer({ browsers: autoprefixerBrowsers })))
+    .pipe(
+      gulpif(
+        production,
+        mincss({
+          compatibility: "ie8",
+          level: {
+            1: {
+              specialComments: 0,
+              removeEmpty: true,
+              removeWhitespace: true
+            },
+            2: {
+              mergeMedia: true,
+              removeEmpty: true,
+              removeDuplicateFontRules: true,
+              removeDuplicateMediaBlocks: true,
+              removeDuplicateRules: true,
+              removeUnusedAtRules: false
+            }
+          }
+        })
+      )
+    )
+    .pipe(
+      gulpif(
+        production,
+        rename({
+          suffix: ".min"
+        })
+      )
+    )
     .pipe(plumber.stop())
     .pipe(gulpif(!production, sourcemaps.write("./maps/")))
     .pipe(gulp.dest(paths.styles.dist))
-    .pipe(debug({
-      "title": "CSS files"
-    }))
+    .pipe(
+      debug({
+        title: "CSS files"
+      })
+    )
     .pipe(browsersync.stream());
 });
