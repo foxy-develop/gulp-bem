@@ -20,8 +20,8 @@ import fonts from "postcss-font-magician";
 const argv = yargs.argv,
   production = !!argv.production;
 
+gulp.task("importBlocks", ()=> importBlocks("scss"));
 gulp.task("styles", () => {
-  importBlocks("scss");
   return gulp
     .src(paths.styles.src)
     .pipe(gulpif(!production, sourcemaps.init()))

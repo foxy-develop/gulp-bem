@@ -24,16 +24,22 @@ const paths = {
     watch: ["./src/blocks/**/*.pug", "./src/pug/**/*.pug", "./src/pages/**/*.pug"],
     html: ["./dist/**/*.html"]
   },
+  pug: {
+    blocks: "./src/blocks/**/*.pug",
+    pages: ["./src/pug/**/*.pug", "./src/pages/**/*.pug"]
+  },
   styles: {
     src: "./src/scss/main.scss",
     dist: "./dist/css/",
-    watch: ["./src/blocks/**/*.scss", "./src/scss/**/*.scss"],
+    watch: ["./src/scss/**/*.scss", "./src/blocks/**/*.scss"],
+    blocks: "./src/blocks/**/*.scss",
     dir: "./src/scss/"
   },
   scripts: {
     src: "./src/js/main.js",
     dist: "./dist/js/",
-    watch: ["./src/blocks/**/*.js", "./src/js/**/*.js"]
+    watch: ["./src/js/**/*.js", "./src/blocks/**/*.js"],
+    blocks: "./src/blocks/**/*.js"
   },
   serviceWorker: {
     src: "src/js/serviceWorker/serviceWorker.js",

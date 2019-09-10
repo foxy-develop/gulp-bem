@@ -8,3 +8,6 @@ html {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif; // stylelint-disable
 }
+.container {
+  display: flex;
+}

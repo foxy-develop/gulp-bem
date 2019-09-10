@@ -30,8 +30,8 @@ const argv = yargs.argv,
 
 pugOption.filters = { "show-code": pugFilter };
 pugMixins();
-gulp.task("views", () =>
-  gulp
+gulp.task("views", () => {
+  return gulp
     .src(paths.views.src)
     .pipe(debug({ title: "Compiles " }))
     .pipe(pug(pugOption))
@@ -43,4 +43,8 @@ gulp.task("views", () =>
     .pipe(gulpif(production, replace(".js", ".min.js")))
     .pipe(through2.obj(getFromHtml))
     .pipe(gulp.dest(paths.views.dist))
-    .pipe(browsersync.stream()));
+    .pipe(browsersync.stream());
+});
+gulp.task("views:blocks", () => {
+  pugMixins();
+});

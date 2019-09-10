@@ -17,9 +17,8 @@ webpackConfig.mode = production ? "production" : "development";
 webpackConfig.devtool = production ? false : "source-map";
 webpackConfig.resolve = { alias: { "%modules%": path.resolve(__dirname, paths.bem.blocks)}};
 
-
+gulp.task("importJs", () => importBlocks("js"));
 gulp.task("scripts", () => {
-  importBlocks("js");
   return gulp.src(paths.scripts.src)
     .pipe(webpackStream(webpackConfig))
     .pipe(gulpif(production, rename({ suffix: ".min"})))

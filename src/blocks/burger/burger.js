@@ -17,5 +17,4 @@ ready(function(){
       document.getElementById(targetId).classList.toggle(targetClassToggle);
     }
   }
-
 });
