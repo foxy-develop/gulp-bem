@@ -1,4 +1,5 @@
 src/styles/vendor/*.scss
 src/scss/_base.scss
+libary/*.*/*.scss
 .stylelintrc.json
 README.md

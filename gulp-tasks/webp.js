@@ -10,18 +10,18 @@ import browsersync from "browser-sync";
 import yargs from "yargs";
 
 const argv = yargs.argv,
-    production = !!argv.production;
+  production = !!argv.production;
 
 gulp.task("webp", () => {
-    return gulp.src(paths.webp.src)
-        .pipe(webp(gulpif(production, imageminWebp({
-            lossless: true,
-            quality: imageQuality.webp,
-            alphaQuality: 100
-        }))))
-        .pipe(gulp.dest(paths.webp.dist))
-        .pipe(debug({
-            "title": "Images"
-        }))
-        .on("end", browsersync.reload);
+  return gulp.src(paths.webp.src)
+    .pipe(webp(gulpif(production, imageminWebp({
+      lossless: true,
+      quality: imageQuality.webp,
+      alphaQuality: 100
+    }))))
+    .pipe(gulp.dest(paths.webp.dist))
+    .pipe(debug({
+      "title": "Images"
+    }))
+    .on("end", browsersync.reload);
 });

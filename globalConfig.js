@@ -7,7 +7,7 @@
 const serverConfig = {
   port: 3500,
   path: "./dist/",
-  logPrefix: "GB",
+  logPrefix: "INME",
   https: false,
   logLevel: "info", //Can be either "info", "debug", "warn", or "silent"
   notify: true
