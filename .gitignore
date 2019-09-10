@@ -25,3 +25,4 @@ src/scss/_blocks.scss
 ex_files
 Thumbs.db
 gulp-bem.code-workspace
+.vscode
