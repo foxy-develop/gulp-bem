@@ -96,6 +96,7 @@ function pugMixins() {
     mixins += `include ${paths.bem.blocks.replace(paths.bem.main, "../")}${block}/${block}.pug\n`;
   });
   fs.writeFileSync(`${paths.bem.main}pug/mixins.pug`, mixins);
+  return;
 }
 exports.pugMixins = pugMixins;
 

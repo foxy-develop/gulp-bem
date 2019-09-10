@@ -1,7 +1,7 @@
 include mixins.pug
 
 doctype html
-html(lang='ru')
+html(class='page  no-js', lang='ru')
   head
     block meta
       meta(charset='utf-8')
@@ -32,19 +32,15 @@ html(lang='ru')
 
   body
     noscript У вас отключен JavaScript. Это пугает.
+    +header()
+      +logo('/')
+        img(src='img/svg/demo-logo.svg', alt='Logo', width='72', height='15')
+      block nav
 
-    .page__inner
-      .page__content
-
-        +header()
-          block nav
-
-        block content
-          p содержимое
-
-      .page__footer-wrapper
-        +footer()
-          block footer
+    block content
+      p содержимое
+    +footer()
+      block footer
 
     block page-bottom
       script(src='js/main.js')

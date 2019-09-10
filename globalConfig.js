@@ -5,12 +5,12 @@
 ****************************************************/
 
 const serverConfig = {
-  port: 3500,
+  port: 3000,
   path: "./dist/",
   logPrefix: "INME",
   https: false,
   logLevel: "info", //Can be either "info", "debug", "warn", or "silent"
-  notify: true
+  notify: false
 };
 
 /***************************************************

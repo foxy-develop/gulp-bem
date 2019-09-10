@@ -1,1 +1,9 @@
-.header {}
+.header {
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: rem(60);
+  }
+}

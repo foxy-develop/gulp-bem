@@ -5,23 +5,21 @@ block meta
 
 //- block append head
 //-   link(rel='stylesheet', href='css/some.css')
+
 block nav
-  nav.nav-main
-    ul.nav-main__list
-      li.nav-main__item Link
-      li.nav-main__item Link 2
+  +main-nav('10')
 
 block content
-  +header()
-    h1 first launch
   .main
     .main__content
       p test
   .container
     h3
-      | Заголовок страницы
+      | Заголовок страницы 1
+    h2
+      | Заголовок страницы 2
 
-  +footer()
-    p test footer
-    p «Подвал»
-    p Контактный телефон: #[a(href='tel:+70000000000') +7 000 000 00 00]
+block footer
+  p test footer
+  p «Подвал» 1
+  p Контактный телефон: #[a(href='tel:+70000000000') +7 000 000 00 00]

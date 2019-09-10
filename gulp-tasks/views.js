@@ -29,10 +29,9 @@ const argv = yargs.argv,
   production = !!argv.production;
 
 pugOption.filters = { "show-code": pugFilter };
-
 pugMixins();
-gulp.task("views", () => {
-  return gulp
+gulp.task("views", () =>
+  gulp
     .src(paths.views.src)
     .pipe(debug({ title: "Compiles " }))
     .pipe(pug(pugOption))
@@ -44,5 +43,4 @@ gulp.task("views", () => {
     .pipe(gulpif(production, replace(".js", ".min.js")))
     .pipe(through2.obj(getFromHtml))
     .pipe(gulp.dest(paths.views.dist))
-    .pipe(browsersync.stream());
-});
+    .pipe(browsersync.stream()));

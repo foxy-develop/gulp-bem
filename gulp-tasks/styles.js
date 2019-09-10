@@ -28,10 +28,14 @@ gulp.task("styles", () => {
     .pipe(plumber())
     .pipe(sass({ includePaths: [__dirname + "/", "node_modules"] }))
     .pipe(groupmedia())
-    .pipe(postcss([fonts({
-      display: "swap",
-      formats: "woff2 woff"
-    })]))
+    .pipe(
+      postcss([
+        fonts({
+          display: "swap",
+          formats: "woff2 woff"
+        })
+      ])
+    )
     .pipe(gulpif(production, autoprefixer({ browsers: autoprefixerBrowsers })))
     .pipe(
       gulpif(
@@ -72,5 +76,5 @@ gulp.task("styles", () => {
         title: "CSS files"
       })
     )
-    .pipe(browsersync.stream());
+    .pipe(browsersync.reload({ stream: true }));
 });
