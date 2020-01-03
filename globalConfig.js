@@ -19,27 +19,30 @@ const serverConfig = {
 
 const paths = {
   views: {
+    pages: ["./src/pages/"],
     src: ["./src/pages/**/*.pug"],
     dist: "./dist/",
     watch: ["./src/blocks/**/*.pug", "./src/pug/**/*.pug", "./src/pages/**/*.pug"],
     html: ["./dist/**/*.html"]
   },
   pug: {
+    all: "./src/pug/**/*.pug",
     blocks: "./src/blocks/**/*.pug",
     pages: ["./src/pug/**/*.pug", "./src/pages/**/*.pug"]
   },
   styles: {
     src: "./src/scss/main.scss",
     dist: "./dist/css/",
-    watch: ["./src/scss/**/*.scss", "./src/blocks/**/*.scss"],
+    watch: "./src/scss/**/*.scss",
     blocks: "./src/blocks/**/*.scss",
     dir: "./src/scss/"
   },
   scripts: {
     src: "./src/js/main.js",
     dist: "./dist/js/",
-    watch: ["./src/js/**/*.js", "./src/blocks/**/*.js"],
-    blocks: "./src/blocks/**/*.js"
+    watch: "./src/js/**/*.js",
+    blocks: "./src/blocks/**/*.js",
+    entry: "./src/js/_blocks.js"
   },
   serviceWorker: {
     src: "src/js/serviceWorker/serviceWorker.js",

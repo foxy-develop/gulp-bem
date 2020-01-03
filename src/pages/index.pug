@@ -10,8 +10,11 @@ block nav
   +main-nav('10')
 
 block content
+  .preloader
   .main
-    .main__content
+    +breadcrumbs()
+      | тестовые крошки
+    .main__content.main--test
       p test
       p tester
       p tester 3

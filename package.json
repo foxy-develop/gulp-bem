@@ -79,7 +79,7 @@
     "lint-staged": "^9.2.1",
     "merge-stream": "^2.0.0",
     "path": "^0.12.7",
-    "postcss-font-magician": "^2.2.2",
+    "postcss-font-magician": "^2.3.1",
     "pug-lint": "^2.6.0",
     "require-dir": "^1.2.0",
     "stylelint": "^10.0.1",

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 "use strict";
 
 import gulp from "gulp";
@@ -7,17 +8,20 @@ requireDir("./gulp-tasks/");
 
 
 export const development = gulp.series(
-  gulp.parallel(["clean", "views"]),
-  gulp.parallel(["images", "webp", "sprites", "fonts"]),
+  gulp.parallel(["clean", "views:blocks"]),
+  gulp.parallel(["views", "sprites", "fonts"]),
+  gulp.parallel(["images", "webp", "importBlocks", "importJs"]),
   gulp.parallel(["styles", "scripts"]),
   "serve"
 );
 
 export const prod = gulp.series("clean",
-  gulp.series(["views", "styles",
-    "scripts", "images", "webp", "sprites",
-    "fonts", "favicons",  "serviceWorker",
-    "generateManifest", "gzip"]
+  gulp.series(
+    gulp.parallel(["clean", "views:blocks"]),
+    gulp.parallel(["views", "sprites", "fonts"]),
+    gulp.parallel(["images", "webp", "importBlocks", "importJs"]),
+    gulp.parallel(["styles", "scripts"]),
+    gulp.parallel(["serviceWorker", "generateManifest", "favicons", "gzip"])
   ));
 
 export default development;
