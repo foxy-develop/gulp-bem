@@ -13,18 +13,20 @@ block content
   .preloader
   .main
     +breadcrumbs()
-      | тестовые крошки
-    .main__content.main--test
+      +breadcrumbs-item("тестовые крошки 1", "/")
+      +breadcrumbs-item("тестовые крошки 2", "/", "active")
+      +breadcrumbs-item("тестовые крошки 3", "/")
+    .main__content
       p test
       p tester
       p tester 3
       +card()
         | test 3
-  .container
-    h3
-      | Заголовок страницы 1
-    h2
-      | Заголовок страницы 2
+    .container
+      h3
+        | Заголовок страницы 1
+      h2
+        | Заголовок страницы 2
 
 block footer
   p test footer

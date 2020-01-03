@@ -8,18 +8,18 @@ requireDir("./gulp-tasks/");
 
 
 export const development = gulp.series(
-  gulp.parallel(["clean", "views:blocks"]),
+  "clean",
   gulp.parallel(["views", "sprites", "fonts"]),
-  gulp.parallel(["images", "webp", "importBlocks", "importJs"]),
+  gulp.parallel(["images", "webp"]),
   gulp.parallel(["styles", "scripts"]),
   "serve"
 );
 
 export const prod = gulp.series("clean",
   gulp.series(
-    gulp.parallel(["clean", "views:blocks"]),
+    "clean",
     gulp.parallel(["views", "sprites", "fonts"]),
-    gulp.parallel(["images", "webp", "importBlocks", "importJs"]),
+    gulp.parallel(["images", "webp"]),
     gulp.parallel(["styles", "scripts"]),
     gulp.parallel(["serviceWorker", "generateManifest", "favicons", "gzip"])
   ));
