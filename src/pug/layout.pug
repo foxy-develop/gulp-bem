@@ -1,12 +1,15 @@
 include mixins.pug
-
+block vars
+  -
+    var title = typeof title !== 'undefined' ? title : null
 doctype html
 html(class='page  no-js', lang='ru')
   head
     block meta
       meta(charset='utf-8')
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
-      title Starter-kit
+      if title !== null
+        title= title
       meta(name='theme-color', content='#222')
       meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
       meta(name='viewport', content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
@@ -30,16 +33,18 @@ html(class='page  no-js', lang='ru')
       link(rel='manifest', href='../img/favicons/manifest.json', crossorigin='use-credentials')
       link(rel='stylesheet', href=`../css/main.css?v=${Date.now()}`)
 
-  body
+  body.page__wrapper
     noscript У вас отключен JavaScript. Это пугает.
-    +header()
-      +logo('/')
-        img(src='img/svg/demo-logo.svg', alt='Logo', width='72', height='15')
-      block nav
+    +preloader('active')
+    +header().page__header
+        +logo('/')
+          img(src='img/svg/demo-logo.svg', alt='Logo', width='72', height='15')
+        block nav
 
-    block content
-      p содержимое
-    +footer()
+    main.page__content
+      block content
+
+    +footer().page__footer
       block footer
 
     block page-bottom

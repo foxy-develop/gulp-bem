@@ -93,6 +93,7 @@
     "yargs": "^13.2.4"
   },
   "dependencies": {
+    "animate.css": "^3.7.2",
     "jquery": "^3.4.1"
   },
   "bugs": {

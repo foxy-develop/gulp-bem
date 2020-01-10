@@ -4,10 +4,46 @@
   box-sizing: inherit;
 }
 
-html {
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif; // stylelint-disable
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* stylelint-disable-line */
+  -webkit-text-size-adjust: 100%; /* stylelint-disable-line */
+  min-width: rem(320);
+  min-height: 100%;
+  font-size: 62.5%;
+
+  &__wrapper {
+    display: flex;           // Исправляем баг в IE для min-height and flexbox (flex-direction:column)
+    flex-direction: column;  // и прижимаем footer в IE 10-11
+    min-height: 100vh;
+    margin: 0;
+    word-break: break-word;
+    font-family: $font-family;
+    font-size: $font-size;
+    line-height: $line-height;
+    text-align: left;
+    color: $text-color;
+    background-color: $body-bg;
+    scroll-behavior: smooth;
+
+    -webkit-text-size-adjust: 100%; /* stylelint-disable-line */
+    -webkit-box-orient: vertical; /* stylelint-disable-line */
+    -webkit-box-direction: normal; /* stylelint-disable-line */
+    -webkit-font-smoothing: antialiased; /* stylelint-disable-line */
+    -moz-osx-font-smoothing: grayscale /* stylelint-disable-line */
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__footer {
+    flex-shrink: 0;
+  }
 }
-.container {
-  display: flex;
-}
+

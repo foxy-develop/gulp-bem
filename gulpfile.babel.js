@@ -12,16 +12,18 @@ export const development = gulp.series(
   gulp.parallel(["views", "sprites", "fonts"]),
   gulp.parallel(["images", "webp"]),
   gulp.parallel(["styles", "scripts"]),
+  gulp.parallel(["serviceWorker", "favicons", "gzip"]),
   "serve"
 );
 
-export const prod = gulp.series("clean",
+export const production = gulp.series("clean",
   gulp.series(
     "clean",
     gulp.parallel(["views", "sprites", "fonts"]),
     gulp.parallel(["images", "webp"]),
     gulp.parallel(["styles", "scripts"]),
-    gulp.parallel(["serviceWorker", "generateManifest", "favicons", "gzip"])
+    gulp.parallel(["serviceWorker", "favicons", "gzip"]),
+    "serve"
   ));
 
 export default development;

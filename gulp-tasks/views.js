@@ -40,7 +40,7 @@ gulp.task("views", () => {
     .pipe(replace(/^( *)(<.+?>)(<script>)([\s\S]*)(<\/script>)/gm, "$1$2\n$1$3\n$4\n$1$5\n"))
     .pipe(replace(/^( *)(<.+?>)(<script\s+src.+>)(?:[\s\S]*)(<\/script>)/gm, "$1$2\n$1$3$4"))
     .pipe(gulpif(production, replace(".css", ".min.css")))
-    .pipe(gulpif(production, replace(".js", ".min.js")))
+    .pipe(gulpif(production, replace("main.js", "main.min.js ")))
     .pipe(through2.obj(getFromHtml))
     .pipe(gulp.dest(paths.views.dist))
     .pipe(browsersync.stream());

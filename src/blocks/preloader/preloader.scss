@@ -1,11 +1,151 @@
-.preloader {
-  display: none;
-  position: fixed;
+// В этом файле должны быть стили для БЭМ-блока preloader, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий..
+
+$diameter : 70;
+$distance : 20;
+$bg       : inherit;
+$speed    : 1000;
+
+$c1 : rgba($color-main, 0.2);
+$c2 : rgba($color-main, 0.4);
+$c3 : rgba($color-main, 0.72);
+$c4 : $color-main;
+
+$radius : $diameter/2;
+$borderSize : ($diameter/100) * ( ($diameter/5 + 1) - (($diameter - 100 + $distance) / 5) );
+
+$left : floor($radius - $borderSize);
+$calcSpeed : $speed/8;
+
+%lines { // stylelint-disable
+  content: '';
+  position: absolute;
+  z-index: -1;
   top: 0;
+  left: $left+px;
+  border: ceil($borderSize)+px solid transparent;
+  border-top: $radius+px solid $c1;
+  border-bottom: $radius+px solid $c1;
+  animation: rotateColor $speed+ms infinite;
+}
+// stylelint-enable
+
+.preloader {
+
+  $this:                &; // #{$block-name}__element
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1150;
+  top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
+  width: 100vw;
+  height: 100vh;
+  font-weight: 900;
+  font-size: rem(32);
+  line-height: rem(35);
+  overflow: hidden;
+  text-align: center;
+  color: $text-color;
+  background: $body-bg;
+  opacity: 0;
+  transform: scale(3);
+  transition: 0.3s ease-in-out;
+  pointer-events: none;
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    width: $diameter+px;
+    height: $diameter+px;
+    overflow: hidden;
+    border-radius: 100%;
+    background: $bg;
+
+    &:before,
+    &:after {
+      @extend %lines;  /* stylelint-disable-line */
+    }
+
+    &:after {
+      transform: rotate(45deg);
+      animation-delay: $calcSpeed+ms /* stylelint-disable-line */
+    }
+  }
+
+  &__element {
+    width: 80%;
+    height: 80%;
+    overflow: visible;
+    margin: 10%;
+    border: 0;
+    border-radius: 100%;
+    background: $bg;
+
+    &:before,
+    &:after {
+      @extend %lines; /* stylelint-disable-line */
+    }
+
+    &:before {
+      transform: rotate(90deg);
+      animation-delay: $calcSpeed*2+ms; /* stylelint-disable-line */
+    }
+
+    &:after {
+      transform: rotate(135deg);
+      animation-delay: $calcSpeed*3+ms /* stylelint-disable-line */
+    }
+  }
+
+  &--active {
+    opacity: 1;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+    transition-delay: 0.3s;
+    pointer-events: auto;
+  }
 }
 
+@keyframes rotateColor {
+
+  0% {
+    border-top-color: $c4;
+  }
+
+  12.5% {
+    border-top-color: $c3;
+  }
+
+  25% {
+    border-top-color: $c2;
+  }
+
+  37.5% {
+    border-top-color: $c1;
+  }
+
+  50% {
+    border-bottom-color: $c1;
+  }
+
+  50.00001% {
+    border-bottom-color: $c4;
+  }
+
+  62.5% {
+    border-bottom-color: $c3;
+  }
+
+  75% {
+    border-bottom-color: $c2;
+  }
+
+  87.5% {
+    border-bottom-color: $c1;
+  }
+}

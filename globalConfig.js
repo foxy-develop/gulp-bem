@@ -45,9 +45,9 @@ const paths = {
     entry: "./src/js/_blocks.js"
   },
   serviceWorker: {
-    src: "src/js/serviceWorker/serviceWorker.js",
-    dist: "dist/serviceWorker.js",
-    watch: "src/js/serviceWorker/serviceWorker.js",
+    src: "src/js/serviceWorker/sw.js",
+    dist: "dist/sw.js",
+    watch: "src/js/serviceWorker/sw.js",
     glob: "dist"
   },
   images: {
@@ -71,7 +71,7 @@ const paths = {
     watch: ["./src/fonts/**/*.{woff,woff2}"]
   },
   favicons: {
-    src: ["./src/img/favicon/*.{jpg,jpeg,png,gif}"],
+    src: ["./src/img/favicons/*.{jpg,jpeg,png,gif}"],
     dist: "./dist/img/favicons/"
   },
   gzip: {
@@ -90,9 +90,9 @@ const paths = {
 ****************************************************/
 
 const manifest = {
-  name: "GULP-BEM",
-  shortname: "GB",
-  description: "Automotive tasks system for BEM",
+  name: "Starter Kit",
+  shortname: "SK",
+  description: "Foxy dev starter kit",
   url: "/",
   bg: "#000",
   lang: "RU-ru",

@@ -1,32 +1,28 @@
 extends ../pug/layout.pug
 
-//- block meta
-//-   title Главная
-
-//- block append head
-//-   link(rel='stylesheet', href='css/some.css')
+prepend vars
+    - title = 'Starter Kit'
 
 block nav
-  +main-nav('10')
+  +main-nav()
 
 block content
-  .preloader
-  .main
-    +breadcrumbs()
-      +breadcrumbs-item("тестовые крошки 1", "/")
-      +breadcrumbs-item("тестовые крошки 2", "/", "active")
-      +breadcrumbs-item("тестовые крошки 3", "/")
-    .main__content
+  +breadcrumbs()
+    +breadcrumbs-item("тестовые крошки 1", "/")
+    +breadcrumbs-item("тестовые крошки 2", "/", "active")
+    +breadcrumbs-item("тестовые крошки 3", "/")
+  .main__content.bounceIn
+    .container
       p test
       p tester
       p tester 3
       +card()
         | test 3
-    .container
-      h3
-        | Заголовок страницы 1
-      h2
-        | Заголовок страницы 2
+  .container
+    h3
+      | Заголовок страницы 1
+    h2
+      | Заголовок страницы 2
 
 block footer
   p test footer
